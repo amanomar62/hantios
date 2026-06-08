@@ -44,15 +44,17 @@ const Home = () => {
             </a>
           </div>
 
-          {/* Crisp Light Dashboard Mockup */}
-          <div className="relative max-w-5xl mx-auto shadow-2xl rounded-t-2xl bg-white border border-slate-200/80 overflow-hidden">
-            <div className="bg-[#FAF8F5] border-b border-slate-200/80 h-10 flex items-center px-6 gap-2 shrink-0">
-              <div className="w-3 h-3 rounded-full bg-red-400"></div>
-              <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-              <div className="w-3 h-3 rounded-full bg-green-400"></div>
-              <div className="ml-4 text-xs text-slate-400 font-mono">dashboard.hantios.com</div>
+          {/* Crisp Light Dashboard Mockup with Premium Animated Gradient Border */}
+          <div className="gradient-border-wrapper">
+            <div className="gradient-border-inner">
+              <div className="bg-[#FAF8F5] border-b border-slate-200/80 h-10 flex items-center px-6 gap-2 shrink-0">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                <div className="ml-4 text-xs text-slate-400 font-mono">dashboard.hantios.com</div>
+              </div>
+              <DashboardMockup />
             </div>
-            <DashboardMockup />
           </div>
         </div>
       </section>

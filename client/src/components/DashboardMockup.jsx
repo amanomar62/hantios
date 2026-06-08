@@ -101,7 +101,7 @@ const DashboardMockup = () => {
   ];
 
   return (
-    <div className="flex bg-[#FAF7F2] text-slate-800 h-[650px] text-left overflow-hidden font-sans border border-slate-200 shadow-2xl rounded-b-xl select-none" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <div className="flex bg-[#FAF7F2] text-slate-800 h-[650px] text-left overflow-hidden font-sans select-none" style={{ backgroundColor: 'var(--color-bg)' }}>
       {/* 1. Sidebar */}
       <aside className="sidebar shrink-0 h-full relative">
         <div className="flex items-center justify-center p-6 mb-2">
@@ -117,22 +117,9 @@ const DashboardMockup = () => {
                 <li key={item.label}>
                   <button
                     onClick={() => handleTabClick(item.label)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem',
-                      padding: '0.75rem 1rem 0.75rem 0.85rem',
-                      borderRadius: 'var(--radius-md)',
-                      color: isActive ? 'var(--color-text-main)' : 'var(--color-text-muted)',
-                      backgroundColor: isActive ? 'rgba(15, 118, 110, 0.12)' : 'transparent',
-                      borderLeft: isActive ? '4px solid var(--color-secondary)' : '4px solid transparent',
-                      fontWeight: isActive ? '600' : '400',
-                      width: '100%',
-                      textAlign: 'left',
-                      transition: 'var(--transition)'
-                    }}
+                    className={`mockup-sidebar-btn ${isActive ? 'active' : ''}`}
                   >
-                    <Icon size={20} style={{ color: isActive ? 'var(--color-secondary)' : 'var(--color-text-muted)', transition: 'var(--transition)' }} />
+                    <Icon size={20} />
                     <span>{item.label}</span>
                   </button>
                 </li>
@@ -142,15 +129,19 @@ const DashboardMockup = () => {
         </div>
 
         {/* Autoplay Status Indicator */}
-        <div className="px-6 py-2 border-t flex justify-between items-center bg-slate-50/50" style={{ borderColor: 'var(--color-border)' }}>
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-            {isAutoplay ? 'Autoplay Active' : 'Autoplay Paused'}
-          </span>
+        <div className="px-6 py-3 border-t flex justify-between items-center bg-[#FAF8F5]/80" style={{ borderColor: 'var(--color-border)' }}>
+          <div className="flex items-center gap-2">
+            <span className={`w-2 h-2 rounded-full ${isAutoplay ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'}`}></span>
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+              {isAutoplay ? 'Live Demo Cycle' : 'Demo Paused'}
+            </span>
+          </div>
           <button 
             onClick={() => setIsAutoplay(!isAutoplay)}
-            className="text-slate-400 hover:text-teal-700 transition-colors"
+            className="w-6 h-6 rounded-full flex items-center justify-center text-slate-400 hover:text-teal-700 hover:bg-slate-100 transition-all active:scale-90"
+            title={isAutoplay ? 'Pause autoplay' : 'Play autoplay'}
           >
-            {isAutoplay ? <Pause size={14} /> : <Play size={14} />}
+            {isAutoplay ? <Pause size={12} /> : <Play size={12} />}
           </button>
         </div>
 

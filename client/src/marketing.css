@@ -455,6 +455,135 @@
 }
 .animate-pulse-glow { animation: pulse-glow 2.5s infinite; }
 
+/* Animated Gradient Border Frame for Hero Mockup */
+.gradient-border-wrapper {
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.6), 0 0 50px rgba(20, 184, 166, 0.15);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  z-index: 10;
+  max-width: 64rem; /* max-w-5xl equivalence */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gradient-border-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    #14b8a6 90deg,     /* Teal */
+    #fbbf24 180deg,    /* Gold / Amber */
+    #14b8a6 270deg,    /* Teal */
+    transparent 360deg
+  );
+  animation: rotate-gradient 8s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gradient-border-wrapper:hover {
+  transform: translateY(-6px) scale(1.005);
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.7), 0 0 60px rgba(20, 184, 166, 0.3);
+}
+
+.gradient-border-inner {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border-radius: calc(1.5rem - 3px);
+  overflow: hidden;
+}
+
+/* Override inner components borders/shadows inside the hero preview to look integrated */
+.gradient-border-inner > div {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+@keyframes rotate-gradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mockup Content Fade In & Slide Up Transition */
+.animate-fade-in {
+  animation: mockup-fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes mockup-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sidebar buttons in Hero Mockup */
+.mockup-sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 0.75rem 0.85rem;
+  border-radius: 0.625rem; /* radius-md */
+  width: 100%;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--color-text-muted);
+  background: transparent;
+  border-left: 4px solid transparent;
+  font-weight: 500;
+}
+
+.mockup-sidebar-btn:hover {
+  background: rgba(15, 118, 110, 0.05);
+  color: var(--color-text-main);
+  padding-left: 1rem;
+}
+
+.mockup-sidebar-btn.active {
+  color: var(--color-text-main);
+  background: rgba(15, 118, 110, 0.12);
+  border-left: 4px solid var(--color-secondary);
+  font-weight: 600;
+}
+
+.mockup-sidebar-btn svg {
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+
+.mockup-sidebar-btn.active svg {
+  color: var(--color-secondary);
+}
+
+/* Glass card styling specifically inside the premium mockup frame */
+.gradient-border-inner .glass-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.gradient-border-inner .glass-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04), 0 0 20px rgba(20, 184, 166, 0.08);
+  border-color: rgba(20, 184, 166, 0.3) !important;
+}
+
 /* Cards hover scale */
 .hover-card-scale {
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
