@@ -4,7 +4,9 @@
   "description": "HantiOS property management system backend",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "migrate": "npx knex migrate:latest",
+    "seed": "npx knex seed:run"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
