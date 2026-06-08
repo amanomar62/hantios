@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: hantios-backend
+    env: node
+    plan: free
+    buildCommand: "npm install && npm install --prefix server"
+    startCommand: "npm run start --prefix server"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hantios-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ALLOWED_ORIGIN
+        value: "https://your-vercel-domain.vercel.app" # UPDATE THIS ON RENDER DASHBOARD AFTER VERCEL DEPLOYMENT
+        
+databases:
+  - name: hantios-db
+    databaseName: hantios_prod
+    user: hantios_admin
+    plan: free
