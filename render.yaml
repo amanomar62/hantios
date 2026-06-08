@@ -3,7 +3,7 @@ services:
     name: hantios-backend
     env: node
     plan: free
-    buildCommand: "npm install --prefix server"
+    buildCommand: "npm install --omit=dev --prefix server"
     startCommand: "npm run migrate --prefix server && npm run seed --prefix server && npm run start --prefix server"
     envVars:
       - key: NODE_ENV
